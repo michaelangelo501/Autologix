@@ -1,0 +1,30 @@
+<div class="conteiner-fluid">
+    <div class="row">
+        <div class="col-md-4 mx-auto">
+        <div class="card">
+            <div class="card-header">
+            <h3>Log In</h3>
+            </div>
+            <div class="card-body">
+            <form>
+                <div class="form-floating mb-3">
+                <input type="text" class="form-control" placeholder="example@gmail.com" name="user" [(ngModel)]="user.usuario">
+                <div class="invalid-feedback">Lo sentimos, la contraseña o el usuario estan mal</div>
+                <label for="floatingInput">Usuario</label>
+                </div>
+                <div class="form-floating">
+                <input type="password" class="form-control" placeholder="Password" name="contrasena" [(ngModel)]="user.contrasena">
+                <div class="invalid-feedback">Lo sentimos, la contraseña o el usuario estan mal</div>
+                <label for="floatingPassword">Contraseña</label>
+                </div>
+                <br>
+                <div> 
+                <button class="btn btn-info me-sm-4 my-sm-0" type="submit" (click)="logIn()">Iniciar Sesión</button>
+                <button type="registrar" class="btn btn-primary" routerLink="/signUp">Resgitrarse</button>
+                </div>
+            </form>
+            </div>
+        </div>
+        </div>
+    </div>
+</div>
