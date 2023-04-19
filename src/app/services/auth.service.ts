@@ -1,21 +1,15 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { JwtHelperService } from '@auth0/angular-jwt';
-import { TokenInterceptorService } from './token-interceptor.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
 
-  header = new Headers();
 
   constructor(private http:HttpClient,
-    private jwtHelper:JwtHelperService, 
-    private tokenInterceptor:TokenInterceptorService) { 
-
-      this.header.append("Content-Type","application/json");
-      this.header.append("Authorization",`x-acces-token:${localStorage.getItem('token')}`);
+    private jwtHelper:JwtHelperService,) { 
     }
 
   signIn(user:any){
@@ -31,7 +25,11 @@ export class AuthService {
   }
 
   getIntegrantes(){
-    return this.http.get(`http://ecoserver.hopto.org:3000/integrantes`)
+    const authToken = localStorage.getItem('token')
+    const headers = new HttpHeaders({
+      'Authorization': `x-acces-token:${authToken}`
+    });
+    return this.http.get(`http://ecoserver.hopto.org:3000/integrantes`,{headers})
   }
 
   getUsuarios(){

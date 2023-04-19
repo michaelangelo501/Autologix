@@ -1,3 +1,4 @@
+import { animate } from '@angular/animations';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthService } from 'src/app/services/auth.service';
@@ -8,6 +9,8 @@ import { AuthService } from 'src/app/services/auth.service';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent {
+
+  inputValue:string="";
 
   user = {
     usuario: '',
@@ -30,5 +33,9 @@ export class LoginComponent {
       console.log(err);
     }
     )
+  }
+
+  borrarInput(){
+    this.inputValue = '';
   }
 }
